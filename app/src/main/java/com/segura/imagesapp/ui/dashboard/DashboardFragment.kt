@@ -4,6 +4,7 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.view.inputmethod.EditorInfo
 import android.widget.TextView
 import androidx.databinding.DataBindingUtil
 import androidx.fragment.app.Fragment
@@ -41,6 +42,17 @@ class DashboardFragment : Fragment(), ImageListPagedAdapter.OnClickListener {
         super.onViewCreated(view, savedInstanceState)
         prepareRecyclerView()
         setupObservers()
+        setupSearch()
+    }
+
+    private fun setupSearch() {
+        fragmentDashboardBinding.edtSearch.setOnEditorActionListener { _, actionId, _ ->
+            if (actionId == EditorInfo.IME_ACTION_SEARCH) {
+                dashboardViewModel.getFilterImages(fragmentDashboardBinding.edtSearch.text?.toString()!!)
+            }
+
+            true
+        }
     }
 
     private fun setupObservers() {
@@ -51,6 +63,10 @@ class DashboardFragment : Fragment(), ImageListPagedAdapter.OnClickListener {
             } else {
                 fragmentDashboardBinding.linearEmptyView.visibility = View.GONE
             }
+        })
+
+        dashboardViewModel.filterImages.observe(viewLifecycleOwner, {
+            favoritePhotosAdapter.submitList(it)
         })
     }
 

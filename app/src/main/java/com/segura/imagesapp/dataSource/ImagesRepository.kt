@@ -11,6 +11,7 @@ import com.segura.imagesapp.network.safeApiCall
 import com.segura.imagesapp.utils.ConstantsUtils
 import com.segura.imagesapp.utils.logDebug
 import kotlinx.coroutines.Dispatchers
+import kotlinx.coroutines.flow.Flow
 
 class ImagesRepository(
     private val imagesRemoteDataSource: ImagesRemoteDataSource,
@@ -64,6 +65,11 @@ class ImagesRepository(
 
     suspend fun deleteFavoritePhoto(imageItem: ImageItem) {
         imagesLocalDataSource.deleteFavorite(imageItem.id)
+    }
+
+
+    suspend fun searchImages(query: String): List<ImageItem> {
+        return imagesLocalDataSource.getPhotosWithFilter(query)
     }
 
 

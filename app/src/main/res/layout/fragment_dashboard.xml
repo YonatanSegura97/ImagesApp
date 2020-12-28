@@ -19,16 +19,34 @@
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent" />
 
+        <com.google.android.material.textfield.TextInputEditText
+            android:id="@+id/edt_search"
+            android:layout_width="match_parent"
+            android:layout_height="50dp"
+            android:layout_marginStart="16dp"
+            android:layout_marginTop="8dp"
+            android:layout_marginEnd="16dp"
+            android:background="@drawable/search_rounded_bg"
+            android:drawableStart="@drawable/ic_search"
+            android:drawablePadding="6dp"
+            android:drawableTint="#FFB6B6B6"
+            android:hint="@string/search_images"
+            android:imeOptions="actionSearch"
+            android:inputType="textNoSuggestions|text|textCapSentences"
+            android:paddingStart="16dp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/txt_title" />
+
         <androidx.recyclerview.widget.RecyclerView
             android:id="@+id/favorite_recyclers"
             android:layout_width="match_parent"
             android:layout_height="0dp"
-            android:layout_marginTop="8dp"
             android:overScrollMode="never"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/txt_title" />
+            app:layout_constraintTop_toBottomOf="@+id/edt_search" />
 
         <LinearLayout
             android:id="@+id/linear_empty_view"

@@ -3,6 +3,7 @@ package com.segura.imagesapp.local
 import androidx.lifecycle.LiveData
 import androidx.room.*
 import com.segura.imagesapp.model.ImageItem
+import com.segura.imagesapp.model.User
 
 
 @Dao
@@ -16,4 +17,8 @@ interface PhotosDao {
 
     @Query("DELETE FROM FavoritePhotos WHERE id = :photoId")
     suspend fun deleteFavorite(photoId: String)
+
+
+    @Query("SELECT * FROM FavoritePhotos WHERE user like '%' || :userName || '%'")
+    suspend fun getPhotosWithFilter(userName: String): List<ImageItem>
 }
