@@ -1,0 +1,114 @@
+{
+  "formatVersion": 1,
+  "database": {
+    "version": 3,
+    "identityHash": "48bf61f00683c63b9ca50a9c5b90ed4c",
+    "entities": [
+      {
+        "tableName": "FavoritePhotos",
+        "createSql": "CREATE TABLE IF NOT EXISTS `${TABLE_NAME}` (`altDescription` TEXT NOT NULL DEFAULT 'empty', `blurHash` TEXT NOT NULL, `color` TEXT NOT NULL, `createdAt` TEXT NOT NULL, `description` TEXT NOT NULL DEFAULT 'empty', `height` INTEGER NOT NULL, `id` TEXT NOT NULL, `likedByUser` INTEGER NOT NULL, `likes` INTEGER NOT NULL, `promotedAt` TEXT NOT NULL, `updatedAt` TEXT NOT NULL, `urls` TEXT NOT NULL, `user` TEXT NOT NULL, `width` INTEGER NOT NULL, PRIMARY KEY(`id`))",
+        "fields": [
+          {
+            "fieldPath": "altDescription",
+            "columnName": "altDescription",
+            "affinity": "TEXT",
+            "notNull": true,
+            "defaultValue": "'empty'"
+          },
+          {
+            "fieldPath": "blurHash",
+            "columnName": "blurHash",
+            "affinity": "TEXT",
+            "notNull": true
+          },
+          {
+            "fieldPath": "color",
+            "columnName": "color",
+            "affinity": "TEXT",
+            "notNull": true
+          },
+          {
+            "fieldPath": "createdAt",
+            "columnName": "createdAt",
+            "affinity": "TEXT",
+            "notNull": true
+          },
+          {
+            "fieldPath": "description",
+            "columnName": "description",
+            "affinity": "TEXT",
+            "notNull": true,
+            "defaultValue": "'empty'"
+          },
+          {
+            "fieldPath": "height",
+            "columnName": "height",
+            "affinity": "INTEGER",
+            "notNull": true
+          },
+          {
+            "fieldPath": "id",
+            "columnName": "id",
+            "affinity": "TEXT",
+            "notNull": true
+          },
+          {
+            "fieldPath": "likedByUser",
+            "columnName": "likedByUser",
+            "affinity": "INTEGER",
+            "notNull": true
+          },
+          {
+            "fieldPath": "likes",
+            "columnName": "likes",
+            "affinity": "INTEGER",
+            "notNull": true
+          },
+          {
+            "fieldPath": "promotedAt",
+            "columnName": "promotedAt",
+            "affinity": "TEXT",
+            "notNull": true
+          },
+          {
+            "fieldPath": "updatedAt",
+            "columnName": "updatedAt",
+            "affinity": "TEXT",
+            "notNull": true
+          },
+          {
+            "fieldPath": "urls",
+            "columnName": "urls",
+            "affinity": "TEXT",
+            "notNull": true
+          },
+          {
+            "fieldPath": "user",
+            "columnName": "user",
+            "affinity": "TEXT",
+            "notNull": true
+          },
+          {
+            "fieldPath": "width",
+            "columnName": "width",
+            "affinity": "INTEGER",
+            "notNull": true
+          }
+        ],
+        "primaryKey": {
+          "columnNames": [
+            "id"
+          ],
+          "autoGenerate": false
+        },
+        "indices": [],
+        "foreignKeys": []
+      }
+    ],
+    "views": [],
+    "setupQueries": [
+      "CREATE TABLE IF NOT EXISTS room_master_table (id INTEGER PRIMARY KEY,identity_hash TEXT)",
+      "INSERT OR REPLACE INTO room_master_table (id,identity_hash) VALUES(42, '48bf61f00683c63b9ca50a9c5b90ed4c')"
+    ]
+  }
+}

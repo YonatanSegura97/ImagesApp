@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <style name="TitleText" parent="TextAppearance.AppCompat">
+        <item name="android:textColor">@color/text_color_title</item>
+        <item name="android:textSize">@dimen/text_title_size</item>
+        <item name="android:textStyle">bold</item>
+    </style>
+
+    <style name="SubtitleText" parent="TextAppearance.AppCompat">
+        <item name="android:textColor">@color/text_color_subtitle</item>
+        <item name="android:textSize">@dimen/text_title_size</item>
+        <item name="android:textStyle">normal</item>
+    </style>
+
+    <style name="TitleTextExtraBig" parent="TextAppearance.AppCompat">
+        <item name="android:textColor">@color/text_color_title</item>
+        <item name="android:textSize">@dimen/text_title_big_size</item>
+        <item name="android:textStyle">bold</item>
+    </style>
+
+    <style name="GreenText" parent="TextAppearance.AppCompat">
+        <item name="android:textColor">@color/green</item>
+        <item name="android:textSize">@dimen/text_title_size</item>
+        <item name="android:textStyle">bold</item>
+    </style>
+</resources>

@@ -1,0 +1,17 @@
+<resources>
+    <string name="app_name">ImagesApp</string>
+    <string name="title_home">Inicio</string>
+    <string name="title_dashboard">Favoritos</string>
+    <string name="title_notifications">Notifications</string>
+    <string name="label_retry">Reintentar</string>
+    <string name="label_oops_an_error_happened">Ha ocurrido un error</string>
+    <string name="label_add_favorites">Agregar</string>
+    <string name="likes">Likes</string>
+    <string name="collections">Collections</string>
+    <string name="photos">Photos</string>
+    <string name="label_fav_message">Aún no tienes imáges en favoritos</string>
+    <string name="label_favorites">Favoritos</string>
+    <string name="search_images">Buscar imágenes</string>
+    <string name="label_add_favorites_message">Se ha agregado a favoritos</string>
+    <string name="label_remove_favorites_message">Se ha removido de favoritos</string>
+</resources>
