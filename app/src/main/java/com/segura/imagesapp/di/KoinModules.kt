@@ -7,7 +7,7 @@ import com.segura.imagesapp.dataSource.ImagesRepository
 import com.segura.imagesapp.local.PhotosDao
 import com.segura.imagesapp.local.PhotosDatabase
 import com.segura.imagesapp.network.UrlInterceptor
-import com.segura.imagesapp.ui.dashboard.DashboardViewModel
+import com.segura.imagesapp.ui.favorites.FavoriteViewModel
 import com.segura.imagesapp.ui.detail.PhotoDetailViewModel
 import com.segura.imagesapp.ui.home.HomeViewModel
 import com.segura.imagesapp.ui.profile.ProfileViewModel
@@ -25,7 +25,7 @@ import java.util.concurrent.TimeUnit
 
 val viewModelModule = module {
     viewModel { HomeViewModel(get()) }
-    viewModel { DashboardViewModel(get()) }
+    viewModel { FavoriteViewModel(get()) }
     viewModel { (imageId: String, userId: String) ->
         PhotoDetailViewModel(
             imageId,

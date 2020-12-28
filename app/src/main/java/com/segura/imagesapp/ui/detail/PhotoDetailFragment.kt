@@ -7,6 +7,7 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.databinding.DataBindingUtil
+import androidx.navigation.findNavController
 import androidx.navigation.fragment.navArgs
 import com.segura.imagesapp.R
 import com.segura.imagesapp.databinding.PhotoDetailFragmentBinding
@@ -46,7 +47,9 @@ class PhotoDetailFragment : Fragment() {
         super.onActivityCreated(savedInstanceState)
         setupObserver()
 
+
     }
+
 
     private fun setupObserver() {
         viewModel.photoDetailInfo.observe(viewLifecycleOwner, {
@@ -63,6 +66,22 @@ class PhotoDetailFragment : Fragment() {
             binding.txtImageDescription.text = photoInfo.altDescription
             binding.txtLikesCount.text = photoInfo.likes.toString()
             binding.txtViewsCount.text = photoInfo.views.toString()
+
+            binding.imgUserProfile.setOnClickListener { view ->
+                val action =
+                    PhotoDetailFragmentDirections.actionPhotoDetailFragmentToProfileFragment(
+                        photoInfo.user.username
+                    )
+                view.findNavController().navigate(action)
+            }
+
+            binding.txtUserName.setOnClickListener { view ->
+                val action =
+                    PhotoDetailFragmentDirections.actionPhotoDetailFragmentToProfileFragment(
+                        photoInfo.user.username
+                    )
+                view.findNavController().navigate(action)
+            }
         }
     }
 

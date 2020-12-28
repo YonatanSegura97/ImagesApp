@@ -1,15 +1,12 @@
-package com.segura.imagesapp.ui.dashboard
+package com.segura.imagesapp.ui.favorites
 
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.view.inputmethod.EditorInfo
-import android.widget.TextView
 import androidx.databinding.DataBindingUtil
 import androidx.fragment.app.Fragment
-import androidx.lifecycle.Observer
-import androidx.lifecycle.ViewModelProvider
 import androidx.navigation.findNavController
 import androidx.recyclerview.widget.StaggeredGridLayoutManager
 import com.segura.imagesapp.R
@@ -20,9 +17,9 @@ import com.segura.imagesapp.ui.adapters.favorite.FavoritePhotosAdapter
 import com.segura.imagesapp.utils.createSnackBar
 import org.koin.androidx.viewmodel.ext.android.viewModel
 
-class DashboardFragment : Fragment(), ImageListPagedAdapter.OnClickListener {
+class FavoriteFragment : Fragment(), ImageListPagedAdapter.OnClickListener {
 
-    private val dashboardViewModel: DashboardViewModel by viewModel()
+    private val favoriteViewModel: FavoriteViewModel by viewModel()
     private lateinit var fragmentDashboardBinding: FragmentDashboardBinding
     lateinit var favoritePhotosAdapter: FavoritePhotosAdapter
 
@@ -48,7 +45,7 @@ class DashboardFragment : Fragment(), ImageListPagedAdapter.OnClickListener {
     private fun setupSearch() {
         fragmentDashboardBinding.edtSearch.setOnEditorActionListener { _, actionId, _ ->
             if (actionId == EditorInfo.IME_ACTION_SEARCH) {
-                dashboardViewModel.getFilterImages(fragmentDashboardBinding.edtSearch.text?.toString()!!)
+                favoriteViewModel.getFilterImages(fragmentDashboardBinding.edtSearch.text?.toString()!!)
             }
 
             true
@@ -56,7 +53,7 @@ class DashboardFragment : Fragment(), ImageListPagedAdapter.OnClickListener {
     }
 
     private fun setupObservers() {
-        dashboardViewModel.favoritePhotos.observe(viewLifecycleOwner, {
+        favoriteViewModel.favoritePhotos.observe(viewLifecycleOwner, {
             favoritePhotosAdapter.submitList(it)
             if (it.isEmpty()) {
                 fragmentDashboardBinding.linearEmptyView.visibility = View.VISIBLE
@@ -65,7 +62,7 @@ class DashboardFragment : Fragment(), ImageListPagedAdapter.OnClickListener {
             }
         })
 
-        dashboardViewModel.filterImages.observe(viewLifecycleOwner, {
+        favoriteViewModel.filterImages.observe(viewLifecycleOwner, {
             favoritePhotosAdapter.submitList(it)
         })
     }
@@ -81,7 +78,7 @@ class DashboardFragment : Fragment(), ImageListPagedAdapter.OnClickListener {
     }
 
     override fun onImageClicked(position: Int, imageItem: ImageItem) {
-        val action = DashboardFragmentDirections.actionNavigationDashboardToPhotoDetailFragment(
+        val action = FavoriteFragmentDirections.actionNavigationDashboardToPhotoDetailFragment(
             imageItem.id,
             imageItem.user.id
         )
@@ -89,7 +86,7 @@ class DashboardFragment : Fragment(), ImageListPagedAdapter.OnClickListener {
     }
 
     override fun onFavoriteClicked(position: Int, imageItem: ImageItem) {
-        dashboardViewModel.deleteFavoritePhoto(imageItem)
+        favoriteViewModel.deleteFavoritePhoto(imageItem)
         createSnackBar(fragmentDashboardBinding.root, R.string.label_remove_favorites_message)
     }
 
@@ -103,7 +100,7 @@ class DashboardFragment : Fragment(), ImageListPagedAdapter.OnClickListener {
 
     override fun onProfileClicked(position: Int, imageItem: ImageItem) {
         val action =
-            DashboardFragmentDirections.actionNavigationDashboardToProfileFragment(imageItem.user.username)
+            FavoriteFragmentDirections.actionNavigationDashboardToProfileFragment(imageItem.user.username)
         fragmentDashboardBinding.root.findNavController().navigate(action)
     }
 }

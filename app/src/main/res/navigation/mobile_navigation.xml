@@ -23,7 +23,7 @@
 
     <fragment
         android:id="@+id/navigation_dashboard"
-        android:name="com.segura.imagesapp.ui.dashboard.DashboardFragment"
+        android:name="com.segura.imagesapp.ui.favorites.FavoriteFragment"
         android:label="@string/title_dashboard"
         tools:layout="@layout/fragment_dashboard" >
         <action
@@ -58,6 +58,9 @@
         <argument
             android:name="profileId"
             app:argType="string" />
+        <action
+            android:id="@+id/action_photoDetailFragment_to_profileFragment"
+            app:destination="@id/profileFragment" />
     </fragment>
     <fragment
         android:id="@+id/searchFragment"
