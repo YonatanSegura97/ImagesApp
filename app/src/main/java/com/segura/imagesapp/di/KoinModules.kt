@@ -2,16 +2,19 @@ package com.segura.imagesapp.di
 
 import android.app.Application
 import androidx.room.Room
-import com.segura.imagesapp.dataSource.ImagesRemoteDataSource
-import com.segura.imagesapp.dataSource.ImagesRepository
+import com.segura.imagesapp.data.dataSource.ImagesRemoteDataSource
+import com.segura.imagesapp.data.repository.ImageRepositoryImpl
+import com.segura.imagesapp.data.repository.ImagesRepositoryOld
+import com.segura.imagesapp.domain.contract.ImagesRepository
+import com.segura.imagesapp.domain.useCase.GetImagesUseCase
 import com.segura.imagesapp.local.PhotosDao
 import com.segura.imagesapp.local.PhotosDatabase
 import com.segura.imagesapp.network.UrlInterceptor
-import com.segura.imagesapp.ui.favorites.FavoriteViewModel
-import com.segura.imagesapp.ui.detail.PhotoDetailViewModel
-import com.segura.imagesapp.ui.home.HomeViewModel
-import com.segura.imagesapp.ui.profile.ProfileViewModel
-import com.segura.imagesapp.ui.search.SearchViewModel
+import com.segura.imagesapp.presentation.ui.favorites.FavoriteViewModel
+import com.segura.imagesapp.presentation.ui.detail.PhotoDetailViewModel
+import com.segura.imagesapp.presentation.ui.home.HomeViewModel
+import com.segura.imagesapp.presentation.ui.profile.ProfileViewModel
+import com.segura.imagesapp.presentation.ui.search.SearchViewModel
 import com.segura.imagesapp.utils.ConstantsUtils
 import okhttp3.OkHttpClient
 import org.koin.android.ext.koin.androidApplication
@@ -43,10 +46,25 @@ val repositoryModule = module {
     fun provideRepository(
         imagesRemoteDataSource: ImagesRemoteDataSource,
         dao: PhotosDao
-    ): ImagesRepository {
-        return ImagesRepository(imagesRemoteDataSource, dao)
+    ): ImagesRepositoryOld {
+        return ImagesRepositoryOld(imagesRemoteDataSource, dao)
     }
     single { provideRepository(get(), get()) }
+
+
+    //CLEAN --
+    single<ImagesRepository> {
+        ImageRepositoryImpl(
+            get()
+        )
+    }
+
+}
+
+val useCaseModule = module {
+    single { GetImagesUseCase(get()) }
+}
+val re = module {
 
 }
 
@@ -71,6 +89,7 @@ val roomModule = module {
     single { provideDatabase(androidApplication()) }
     single { providePhotosDao(get()) }
 }
+
 
 private fun provideRetrofit(okHttpClient: OkHttpClient, baseUrl: String): Retrofit {
     return Retrofit.Builder()

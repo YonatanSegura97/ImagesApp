@@ -6,7 +6,7 @@
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        tools:context=".ui.search.SearchFragment">
+        tools:context=".presentation.ui.search.SearchFragment">
 
         <com.google.android.material.textfield.TextInputEditText
             android:id="@+id/editText"

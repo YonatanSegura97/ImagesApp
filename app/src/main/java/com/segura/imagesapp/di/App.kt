@@ -18,7 +18,7 @@ class App : Application() {
                     viewModelModule,
                     repositoryModule,
                     remoteDataSourceModule,
-                    roomModule
+                    roomModule, re,useCaseModule
                 )
             )
         }

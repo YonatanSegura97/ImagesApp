@@ -7,7 +7,7 @@
 
     <fragment
         android:id="@+id/navigation_home"
-        android:name="com.segura.imagesapp.ui.home.HomeFragment"
+        android:name="com.segura.imagesapp.presentation.ui.home.HomeFragment"
         android:label="@string/title_home"
         tools:layout="@layout/fragment_home" >
         <action
@@ -23,7 +23,7 @@
 
     <fragment
         android:id="@+id/navigation_dashboard"
-        android:name="com.segura.imagesapp.ui.favorites.FavoriteFragment"
+        android:name="com.segura.imagesapp.presentation.ui.favorites.FavoriteFragment"
         android:label="@string/title_dashboard"
         tools:layout="@layout/fragment_dashboard" >
         <action
@@ -36,12 +36,12 @@
 
     <fragment
         android:id="@+id/navigation_notifications"
-        android:name="com.segura.imagesapp.ui.notifications.NotificationsFragment"
+        android:name="com.segura.imagesapp.presentation.ui.notifications.NotificationsFragment"
         android:label="@string/title_notifications"
         tools:layout="@layout/fragment_notifications" />
     <fragment
         android:id="@+id/profileFragment"
-        android:name="com.segura.imagesapp.ui.profile.ProfileFragment"
+        android:name="com.segura.imagesapp.presentation.ui.profile.ProfileFragment"
         android:label="profile_fragment"
         tools:layout="@layout/profile_fragment" >
         <argument
@@ -50,7 +50,7 @@
     </fragment>
     <fragment
         android:id="@+id/photoDetailFragment"
-        android:name="com.segura.imagesapp.ui.detail.PhotoDetailFragment"
+        android:name="com.segura.imagesapp.presentation.ui.detail.PhotoDetailFragment"
         android:label="PhotoDetailFragment" >
         <argument
             android:name="imageId"
@@ -64,7 +64,7 @@
     </fragment>
     <fragment
         android:id="@+id/searchFragment"
-        android:name="com.segura.imagesapp.ui.search.SearchFragment"
+        android:name="com.segura.imagesapp.presentation.ui.search.SearchFragment"
         android:label="SearchFragment" >
         <action
             android:id="@+id/action_searchFragment_to_photoDetailFragment"

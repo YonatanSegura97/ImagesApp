@@ -3,7 +3,7 @@ package com.segura.imagesapp.network.pagging.search
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.paging.PageKeyedDataSource
-import com.segura.imagesapp.dataSource.ImagesRepository
+import com.segura.imagesapp.data.repository.ImagesRepositoryOld
 import com.segura.imagesapp.model.ImageItem
 import com.segura.imagesapp.network.NetworkState
 import com.segura.imagesapp.network.ResultWrapper
@@ -13,7 +13,7 @@ import kotlinx.coroutines.launch
 
 class SearchImageDataSource(
     private val coroutineScope: CoroutineScope,
-    private val repository: ImagesRepository,
+    private val repositoryOld: ImagesRepositoryOld,
     private var query: String = ""
 ) : PageKeyedDataSource<Int, ImageItem>() {
     //Fot handler the State ----
@@ -29,7 +29,7 @@ class SearchImageDataSource(
         retryQuery = { loadInitial(params, callback) }
         coroutineScope.launch {
             initialNetworkState.postValue(RUNNING)
-            when (val result = repository.searchImages(1, ConstantsUtils.ITEMS_BY_PAGE, query)) {
+            when (val result = repositoryOld.searchImages(1, ConstantsUtils.ITEMS_BY_PAGE, query)) {
                 is ResultWrapper.ApiError -> {
                     initialNetworkState.postValue(ERROR)
                 }
@@ -53,7 +53,7 @@ class SearchImageDataSource(
         coroutineScope.launch {
             networkState.postValue(RUNNING)
             when (val result =
-                repository.searchImages(params.key, ConstantsUtils.ITEMS_BY_PAGE, query)) {
+                repositoryOld.searchImages(params.key, ConstantsUtils.ITEMS_BY_PAGE, query)) {
                 is ResultWrapper.ApiError -> {
                     networkState.postValue(ERROR)
                 }
