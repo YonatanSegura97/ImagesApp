@@ -19,14 +19,14 @@ interface ImagesRemoteDataSource {
 
 
     @GET("photos/{id}")
-    suspend fun getPhotoDetails(
+    suspend fun getImageDetail(
         @Path("id") photoId: String,
         @Query("client_id") clientId: String,
     ): PhotoDetailResponse
 
     @GET("users/{username}")
     suspend fun getUserDetails(
-        @Path("username") photoId: String,
+        @Path("username") username: String,
         @Query("client_id") clientId: String,
     ): User
 

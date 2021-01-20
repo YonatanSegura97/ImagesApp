@@ -9,7 +9,9 @@ import androidx.fragment.app.Fragment
 import androidx.navigation.fragment.navArgs
 import com.segura.imagesapp.R
 import com.segura.imagesapp.databinding.ProfileFragmentBinding
+import com.segura.imagesapp.domain.model.NetworkState
 import com.segura.imagesapp.model.User
+import com.segura.imagesapp.utils.createSnackBar
 import com.segura.imagesapp.utils.loadCircularImage
 import org.koin.androidx.viewmodel.ext.android.viewModel
 import org.koin.core.parameter.parametersOf
@@ -43,7 +45,20 @@ class ProfileFragment : Fragment() {
 
     private fun setupObservers() {
         viewModel.user.observe(viewLifecycleOwner, {
-            setDataToViews(it)
+            when (it.status) {
+                NetworkState.RUNNING -> {
+                    binding.progressProfile.visibility = View.VISIBLE
+                }
+                NetworkState.SUCCESS -> {
+                    setDataToViews(it.data)
+                    binding.progressProfile.visibility = View.GONE
+                }
+                NetworkState.FAILED -> {
+                    binding.progressProfile.visibility = View.GONE
+                    createSnackBar(binding.root, R.string.label_oops_an_error_happened)
+                }
+            }
+
         })
     }
 

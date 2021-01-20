@@ -1,16 +1,18 @@
 package com.segura.imagesapp.presentation.ui.detail
 
 import android.os.Bundle
-import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.databinding.DataBindingUtil
+import androidx.fragment.app.Fragment
 import androidx.navigation.findNavController
 import androidx.navigation.fragment.navArgs
 import com.segura.imagesapp.R
 import com.segura.imagesapp.databinding.PhotoDetailFragmentBinding
+import com.segura.imagesapp.domain.model.NetworkState
 import com.segura.imagesapp.model.photoDetail.PhotoDetailResponse
+import com.segura.imagesapp.utils.createSnackBar
 import com.segura.imagesapp.utils.loadCircularImage
 import com.segura.imagesapp.utils.loadImageWithThumbnail
 import org.koin.androidx.viewmodel.ext.android.viewModel
@@ -20,9 +22,7 @@ class PhotoDetailFragment : Fragment() {
     private val args: PhotoDetailFragmentArgs by navArgs()
     private lateinit var binding: PhotoDetailFragmentBinding
 
-    companion object {
-        fun newInstance() = PhotoDetailFragment()
-    }
+
 
     private val viewModel: PhotoDetailViewModel by viewModel {
         parametersOf(
@@ -34,7 +34,7 @@ class PhotoDetailFragment : Fragment() {
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
-    ): View? {
+    ): View {
 
         binding =
             DataBindingUtil.inflate(inflater, R.layout.photo_detail_fragment, container, false)
@@ -51,8 +51,21 @@ class PhotoDetailFragment : Fragment() {
 
 
     private fun setupObserver() {
-        viewModel.photoDetailInfo.observe(viewLifecycleOwner, {
-            setDataToViews(it)
+
+        viewModel.imageInfo.observe(viewLifecycleOwner, {
+            when (it.status) {
+                NetworkState.RUNNING -> {
+                    binding.progressImageDetail.visibility = View.VISIBLE
+                }
+                NetworkState.SUCCESS -> {
+                    setDataToViews(it.data)
+                    binding.progressImageDetail.visibility = View.GONE
+                }
+                NetworkState.FAILED -> {
+                    binding.progressImageDetail.visibility = View.GONE
+                    createSnackBar(binding.root, R.string.label_oops_an_error_happened)
+                }
+            }
         })
     }
 

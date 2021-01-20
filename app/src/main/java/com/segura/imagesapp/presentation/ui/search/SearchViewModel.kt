@@ -7,8 +7,8 @@ import androidx.lifecycle.viewModelScope
 import androidx.paging.LivePagedListBuilder
 import androidx.paging.PagedList
 import com.segura.imagesapp.data.repository.ImagesRepositoryOld
+import com.segura.imagesapp.domain.model.NetworkState
 import com.segura.imagesapp.model.ImageItem
-import com.segura.imagesapp.network.NetworkState
 import com.segura.imagesapp.network.pagging.search.SearchImageDataSourceFactory
 import com.segura.imagesapp.utils.getPagingConfig
 import kotlinx.coroutines.launch
@@ -39,7 +39,7 @@ class SearchViewModel(private val repositoryOld: ImagesRepositoryOld) : ViewMode
 
     fun insertFavoritePhoto(imageItem: ImageItem) {
         viewModelScope.launch {
-            repositoryOld.insertNewFavoritePhoto(imageItem)
+            //repositoryOld.insertNewFavoritePhoto(imageItem)
         }
     }
 

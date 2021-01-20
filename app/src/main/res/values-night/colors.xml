@@ -9,7 +9,8 @@
     <color name="white">#FFFFFFFF</color>
 
     <!--    CUSTOM COLORS   -->
-    <color name="text_color_title">#FFFFFFFF</color>
+<!--    <color name="text_color_title">#FFFFFFFF</color>-->
+    <color name="text_color_title">#FF000000</color>
     <color name="text_color_subtitle">#706A6A</color>
     <color name="grey">#706A6A</color>
     <color name="green">#587647</color>

@@ -4,8 +4,8 @@ import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.paging.PageKeyedDataSource
 import com.segura.imagesapp.data.repository.ImagesRepositoryOld
+import com.segura.imagesapp.domain.model.NetworkState
 import com.segura.imagesapp.model.ImageItem
-import com.segura.imagesapp.network.NetworkState
 import com.segura.imagesapp.network.ResultWrapper
 import com.segura.imagesapp.utils.ConstantsUtils
 import kotlinx.coroutines.CoroutineScope

@@ -5,19 +5,23 @@ import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.segura.imagesapp.data.repository.ImagesRepositoryOld
+import com.segura.imagesapp.domain.model.Resource
+import com.segura.imagesapp.domain.useCase.GetImageDetailUseCase
 import com.segura.imagesapp.model.photoDetail.PhotoDetailResponse
 import com.segura.imagesapp.network.ResultWrapper
+import kotlinx.coroutines.flow.collect
 import kotlinx.coroutines.launch
 
 class PhotoDetailViewModel(
     imageId: String,
     profileId: String,
-    private val repositoryOld: ImagesRepositoryOld
+    private val getImageDetailUseCase: GetImageDetailUseCase
 ) :
     ViewModel() {
 
-    private val _photoDetailInfo = MutableLiveData<PhotoDetailResponse>()
-    val photoDetailInfo: LiveData<PhotoDetailResponse> get() = _photoDetailInfo
+
+    private val _imageInfo = MutableLiveData<Resource<PhotoDetailResponse>>()
+    val imageInfo: LiveData<Resource<PhotoDetailResponse>> get() = _imageInfo
 
     init {
         getPhotoDetails(imageId)
@@ -25,18 +29,10 @@ class PhotoDetailViewModel(
 
     private fun getPhotoDetails(imageId: String) {
         viewModelScope.launch {
-            val result = repositoryOld.getPhotoDetails(imageId)
-            when (result) {
-                is ResultWrapper.Success -> {
-                    _photoDetailInfo.postValue(result.value)
+            getImageDetailUseCase.execute(imageId)
+                .collect {
+                    _imageInfo.postValue(it)
                 }
-                is ResultWrapper.NetworkError -> {
-//                    Handler error here
-                }
-                is ResultWrapper.ApiError -> {
-//                    Handler error here
-                }
-            }
         }
     }
 

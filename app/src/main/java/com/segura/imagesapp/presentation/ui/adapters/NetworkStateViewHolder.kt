@@ -3,7 +3,7 @@ package com.segura.imagesapp.presentation.ui.adapters
 import android.view.View
 import androidx.recyclerview.widget.RecyclerView
 import com.segura.imagesapp.databinding.NetworkStateItemBinding
-import com.segura.imagesapp.network.NetworkState
+import com.segura.imagesapp.domain.model.NetworkState
 
 class NetworkStateViewHolder(private val binding: NetworkStateItemBinding) :
     RecyclerView.ViewHolder(binding.root) {

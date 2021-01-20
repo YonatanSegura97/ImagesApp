@@ -7,6 +7,7 @@ import android.view.ViewGroup
 import android.view.inputmethod.EditorInfo
 import androidx.databinding.DataBindingUtil
 import androidx.fragment.app.Fragment
+import androidx.lifecycle.lifecycleScope
 import androidx.navigation.findNavController
 import androidx.recyclerview.widget.StaggeredGridLayoutManager
 import com.segura.imagesapp.R
@@ -15,6 +16,9 @@ import com.segura.imagesapp.model.ImageItem
 import com.segura.imagesapp.presentation.ui.adapters.ImageListPagedAdapter
 import com.segura.imagesapp.presentation.ui.adapters.favorite.FavoritePhotosAdapter
 import com.segura.imagesapp.utils.createSnackBar
+import kotlinx.coroutines.flow.collect
+import kotlinx.coroutines.flow.collectLatest
+import kotlinx.coroutines.launch
 import org.koin.androidx.viewmodel.ext.android.viewModel
 
 class FavoriteFragment : Fragment(), ImageListPagedAdapter.OnClickListener {
@@ -53,14 +57,18 @@ class FavoriteFragment : Fragment(), ImageListPagedAdapter.OnClickListener {
     }
 
     private fun setupObservers() {
-        favoriteViewModel.favoritePhotos.observe(viewLifecycleOwner, {
-            favoritePhotosAdapter.submitList(it)
-            if (it.isEmpty()) {
-                fragmentDashboardBinding.linearEmptyView.visibility = View.VISIBLE
-            } else {
-                fragmentDashboardBinding.linearEmptyView.visibility = View.GONE
+
+        viewLifecycleOwner.lifecycleScope.launch {
+            favoriteViewModel.favoritePhotos.collectLatest {
+                favoritePhotosAdapter.submitList(it)
+                if (it.isEmpty()) {
+                    fragmentDashboardBinding.linearEmptyView.visibility = View.VISIBLE
+                } else {
+                    fragmentDashboardBinding.linearEmptyView.visibility = View.GONE
+                }
             }
-        })
+        }
+
 
         favoriteViewModel.filterImages.observe(viewLifecycleOwner, {
             favoritePhotosAdapter.submitList(it)

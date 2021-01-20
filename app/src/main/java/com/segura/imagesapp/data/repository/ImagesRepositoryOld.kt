@@ -44,7 +44,7 @@ class ImagesRepositoryOld(
     suspend fun getPhotoDetails(photoId: String): ResultWrapper<PhotoDetailResponse> {
         return safeApiCall(Dispatchers.IO) {
             logDebug("PhotoDetailsId", photoId)
-            imagesRemoteDataSource.getPhotoDetails(photoId, ConstantsUtils.ACCESS_KEY)
+            imagesRemoteDataSource.getImageDetail(photoId, ConstantsUtils.ACCESS_KEY)
         }
     }
 
@@ -69,7 +69,7 @@ class ImagesRepositoryOld(
 
 
     suspend fun searchImages(query: String): List<ImageItem> {
-        return imagesLocalDataSource.getPhotosWithFilter(query)
+        return imagesLocalDataSource.searchImages(query)
     }
 
 

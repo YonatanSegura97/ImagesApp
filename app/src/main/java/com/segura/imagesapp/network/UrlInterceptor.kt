@@ -7,7 +7,6 @@ import okhttp3.Response
 class UrlInterceptor:Interceptor {
     override fun intercept(chain: Interceptor.Chain): Response {
 
-
         val originalRequest = chain.request()
         val authenticationRequest = originalRequest.newBuilder().build()
 

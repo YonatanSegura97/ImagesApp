@@ -1,7 +1,6 @@
 package com.segura.imagesapp.presentation.ui.home
 
 import android.os.Bundle
-import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -13,7 +12,6 @@ import androidx.recyclerview.widget.StaggeredGridLayoutManager
 import com.segura.imagesapp.R
 import com.segura.imagesapp.databinding.FragmentHomeBinding
 import com.segura.imagesapp.model.ImageItem
-import com.segura.imagesapp.network.NetworkState
 import com.segura.imagesapp.presentation.ui.adapters.ImageListPagedAdapter
 import com.segura.imagesapp.presentation.ui.adapters.ImagePagedAdapter
 import com.segura.imagesapp.utils.createSnackBar
@@ -76,7 +74,6 @@ class HomeFragment : Fragment(), ImageListPagedAdapter.OnClickListener {
     }
 
 
-
     private fun prepareRecycler() {
         imageListPagerAdapter = ImagePagedAdapter(this)
         val gridLayoutManager = StaggeredGridLayoutManager(2, StaggeredGridLayoutManager.VERTICAL)
@@ -96,7 +93,7 @@ class HomeFragment : Fragment(), ImageListPagedAdapter.OnClickListener {
     }
 
     override fun onFavoriteClicked(position: Int, imageItem: ImageItem) {
-        // homeViewModel.insertFavoritePhoto(imageItem)
+        homeViewModel.insertFavoritePhoto(imageItem)
         createSnackBar(fragmentHomeBinding.root, R.string.label_add_favorites_message)
     }
 

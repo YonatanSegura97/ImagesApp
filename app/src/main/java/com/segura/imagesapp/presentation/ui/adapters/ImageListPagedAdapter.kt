@@ -8,8 +8,8 @@ import androidx.recyclerview.widget.RecyclerView
 import com.segura.imagesapp.R
 import com.segura.imagesapp.databinding.NetworkStateItemBinding
 import com.segura.imagesapp.databinding.PhotoListItemBinding
+import com.segura.imagesapp.domain.model.NetworkState
 import com.segura.imagesapp.model.ImageItem
-import com.segura.imagesapp.network.NetworkState
 
 class ImageListPagedAdapter(private val callback: OnClickListener) :
     PagedListAdapter<ImageItem, RecyclerView.ViewHolder>(diffCallback) {
