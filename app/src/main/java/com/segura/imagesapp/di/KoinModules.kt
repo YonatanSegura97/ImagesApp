@@ -39,7 +39,7 @@ val viewModelModule = module {
     }
 
     viewModel { (userName: String) -> ProfileViewModel(userName, get()) }
-    viewModel { SearchViewModel(get()) }
+    viewModel { SearchViewModel(get(), get()) }
 }
 
 
@@ -51,6 +51,7 @@ val useCaseModule = module {
     factory { DeleteFavoriteImageUseCase(get()) }
     factory { SearchFavoriteImagesUseCase(get()) }
     factory { GetUserDetailUseCase(get()) }
+    factory { SearchImagesUseCase(get()) }
 }
 
 

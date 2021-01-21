@@ -7,13 +7,17 @@ import android.view.ViewGroup
 import android.view.inputmethod.EditorInfo
 import androidx.databinding.DataBindingUtil
 import androidx.fragment.app.Fragment
+import androidx.lifecycle.lifecycleScope
 import androidx.navigation.findNavController
 import androidx.recyclerview.widget.StaggeredGridLayoutManager
 import com.segura.imagesapp.R
 import com.segura.imagesapp.databinding.SearchFragmentBinding
 import com.segura.imagesapp.model.ImageItem
 import com.segura.imagesapp.presentation.ui.adapters.ImageListPagedAdapter
+import com.segura.imagesapp.presentation.ui.adapters.ImagePagedAdapter
 import com.segura.imagesapp.utils.createSnackBar
+import kotlinx.coroutines.flow.collectLatest
+import kotlinx.coroutines.launch
 import org.koin.androidx.viewmodel.ext.android.viewModel
 
 class SearchFragment : Fragment(), ImageListPagedAdapter.OnClickListener {
@@ -24,7 +28,7 @@ class SearchFragment : Fragment(), ImageListPagedAdapter.OnClickListener {
 
     private val viewModel: SearchViewModel by viewModel()
     lateinit var binding: SearchFragmentBinding
-    private lateinit var imageListPagerAdapter: ImageListPagedAdapter
+    private lateinit var imageListPagerAdapter: ImagePagedAdapter
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -46,7 +50,11 @@ class SearchFragment : Fragment(), ImageListPagedAdapter.OnClickListener {
 
         binding.editText.setOnEditorActionListener { _, actionId, _ ->
             if (actionId == EditorInfo.IME_ACTION_SEARCH) {
-                viewModel.updateQuery(binding.editText.text?.toString()!!)
+                viewLifecycleOwner.lifecycleScope.launch {
+                    viewModel.searchImage(binding.editText.text?.toString()!!).collectLatest {
+                        imageListPagerAdapter.submitData(it)
+                    }
+                }
             }
 
             true
@@ -54,7 +62,7 @@ class SearchFragment : Fragment(), ImageListPagedAdapter.OnClickListener {
     }
 
     private fun prepareRecycler() {
-        imageListPagerAdapter = ImageListPagedAdapter(this)
+        imageListPagerAdapter = ImagePagedAdapter(this)
         val gridLayoutManager = StaggeredGridLayoutManager(2, StaggeredGridLayoutManager.VERTICAL)
 
         binding.recyclerSearch.apply {
@@ -63,11 +71,7 @@ class SearchFragment : Fragment(), ImageListPagedAdapter.OnClickListener {
         }
     }
 
-    private fun setupObservers() {
-        viewModel.imageList?.observe(viewLifecycleOwner, {
-            imageListPagerAdapter.submitList(it)
-        })
-    }
+
 
     override fun onImageClicked(position: Int, imageItem: ImageItem) {
         val action = SearchFragmentDirections.actionSearchFragmentToPhotoDetailFragment(
@@ -79,7 +83,7 @@ class SearchFragment : Fragment(), ImageListPagedAdapter.OnClickListener {
 
     override fun onFavoriteClicked(position: Int, imageItem: ImageItem) {
         viewModel.insertFavoritePhoto(imageItem)
-        createSnackBar(binding.root,R.string.label_add_favorites_message)
+        createSnackBar(binding.root, R.string.label_add_favorites_message)
     }
 
     override fun onRetryClicked() {

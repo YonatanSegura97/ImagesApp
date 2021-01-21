@@ -1,4 +1,25 @@
 package com.segura.imagesapp.data.paging
 
-class SearchImagePagingSource {
+import androidx.paging.PagingSource
+import com.segura.imagesapp.domain.useCase.SearchImagesUseCase
+import com.segura.imagesapp.model.ImageItem
+
+class SearchImagePagingSource(
+    private val useCase: SearchImagesUseCase,
+    private val query: String
+
+) : PagingSource<Int, ImageItem>() {
+    override suspend fun load(params: LoadParams<Int>): LoadResult<Int, ImageItem> {
+        return try {
+            val nextPage = params.key ?: 1
+            val response = useCase.execute(query, nextPage, 10)
+            LoadResult.Page(
+                data = response.results,
+                prevKey = if (nextPage == 1) null else nextPage - 1,
+                nextKey = nextPage + 1
+            )
+        } catch (e: Exception) {
+            LoadResult.Error(e)
+        }
+    }
 }

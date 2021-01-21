@@ -17,7 +17,6 @@ data class ImageItem(
     val color: String,
     @SerializedName("created_at")
     val createdAt: String,
-
     @ColumnInfo(defaultValue = "empty")
     @SerializedName("description")
     val description: String,
@@ -30,6 +29,7 @@ data class ImageItem(
     val likedByUser: Boolean,
     @SerializedName("likes")
     val likes: Int,
+    @ColumnInfo(defaultValue = "empty")
     @SerializedName("promoted_at")
     val promotedAt: String,
     @SerializedName("updated_at")
