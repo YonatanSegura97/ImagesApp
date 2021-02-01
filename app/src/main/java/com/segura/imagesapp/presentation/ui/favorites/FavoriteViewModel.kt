@@ -4,7 +4,7 @@ import androidx.lifecycle.*
 import com.segura.imagesapp.domain.useCase.DeleteFavoriteImageUseCase
 import com.segura.imagesapp.domain.useCase.GetFavoriteImagesUseCase
 import com.segura.imagesapp.domain.useCase.SearchFavoriteImagesUseCase
-import com.segura.imagesapp.model.ImageItem
+import com.segura.imagesapp.domain.model.ImageItem
 import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.launch
 

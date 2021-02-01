@@ -11,7 +11,7 @@ import androidx.navigation.fragment.navArgs
 import com.segura.imagesapp.R
 import com.segura.imagesapp.databinding.PhotoDetailFragmentBinding
 import com.segura.imagesapp.domain.model.NetworkState
-import com.segura.imagesapp.model.photoDetail.PhotoDetailResponse
+import com.segura.imagesapp.domain.model.photoDetail.PhotoDetailResponse
 import com.segura.imagesapp.utils.createSnackBar
 import com.segura.imagesapp.utils.loadCircularImage
 import com.segura.imagesapp.utils.loadImageWithThumbnail

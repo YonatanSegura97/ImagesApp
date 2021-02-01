@@ -1,9 +1,9 @@
 package com.segura.imagesapp.data.dataSource
 
-import com.segura.imagesapp.model.ImageItem
-import com.segura.imagesapp.model.SearchImagesResponse
-import com.segura.imagesapp.model.User
-import com.segura.imagesapp.model.photoDetail.PhotoDetailResponse
+import com.segura.imagesapp.domain.model.ImageItem
+import com.segura.imagesapp.domain.model.SearchImagesResponse
+import com.segura.imagesapp.domain.model.User
+import com.segura.imagesapp.domain.model.photoDetail.PhotoDetailResponse
 import retrofit2.http.GET
 import retrofit2.http.Path
 import retrofit2.http.Query

@@ -1,10 +1,10 @@
 package com.segura.imagesapp.domain.contract
 
 import com.segura.imagesapp.domain.model.Resource
-import com.segura.imagesapp.model.ImageItem
-import com.segura.imagesapp.model.SearchImagesResponse
-import com.segura.imagesapp.model.User
-import com.segura.imagesapp.model.photoDetail.PhotoDetailResponse
+import com.segura.imagesapp.domain.model.ImageItem
+import com.segura.imagesapp.domain.model.SearchImagesResponse
+import com.segura.imagesapp.domain.model.User
+import com.segura.imagesapp.domain.model.photoDetail.PhotoDetailResponse
 import kotlinx.coroutines.flow.Flow
 
 interface ImagesRepository {

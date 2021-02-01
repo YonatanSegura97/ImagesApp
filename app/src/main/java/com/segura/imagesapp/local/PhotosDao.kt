@@ -2,8 +2,7 @@ package com.segura.imagesapp.local
 
 import androidx.lifecycle.LiveData
 import androidx.room.*
-import com.segura.imagesapp.model.ImageItem
-import com.segura.imagesapp.model.User
+import com.segura.imagesapp.domain.model.ImageItem
 import kotlinx.coroutines.flow.Flow
 
 

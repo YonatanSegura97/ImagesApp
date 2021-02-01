@@ -5,10 +5,10 @@ import com.segura.imagesapp.data.dataSource.ImagesRemoteDataSource
 import com.segura.imagesapp.domain.contract.ImagesRepository
 import com.segura.imagesapp.domain.model.Resource
 import com.segura.imagesapp.local.PhotosDao
-import com.segura.imagesapp.model.ImageItem
-import com.segura.imagesapp.model.SearchImagesResponse
-import com.segura.imagesapp.model.User
-import com.segura.imagesapp.model.photoDetail.PhotoDetailResponse
+import com.segura.imagesapp.domain.model.ImageItem
+import com.segura.imagesapp.domain.model.SearchImagesResponse
+import com.segura.imagesapp.domain.model.User
+import com.segura.imagesapp.domain.model.photoDetail.PhotoDetailResponse
 import com.segura.imagesapp.utils.ConstantsUtils
 import com.segura.imagesapp.utils.DefaultDispatcherProvider
 import kotlinx.coroutines.flow.Flow

@@ -11,7 +11,7 @@ import androidx.navigation.findNavController
 import androidx.recyclerview.widget.StaggeredGridLayoutManager
 import com.segura.imagesapp.R
 import com.segura.imagesapp.databinding.FragmentHomeBinding
-import com.segura.imagesapp.model.ImageItem
+import com.segura.imagesapp.domain.model.ImageItem
 import com.segura.imagesapp.presentation.ui.adapters.ImageListPagedAdapter
 import com.segura.imagesapp.presentation.ui.adapters.ImagePagedAdapter
 import com.segura.imagesapp.utils.createSnackBar

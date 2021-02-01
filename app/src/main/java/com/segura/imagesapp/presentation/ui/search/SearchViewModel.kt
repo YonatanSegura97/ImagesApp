@@ -1,18 +1,12 @@
 package com.segura.imagesapp.presentation.ui.search
 
-import androidx.lifecycle.LiveData
-import androidx.lifecycle.Transformations
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import androidx.paging.*
 import com.segura.imagesapp.data.paging.SearchImagePagingSource
-import com.segura.imagesapp.data.repository.ImagesRepositoryOld
-import com.segura.imagesapp.domain.model.NetworkState
 import com.segura.imagesapp.domain.useCase.InsertFavoriteImageUseCase
 import com.segura.imagesapp.domain.useCase.SearchImagesUseCase
-import com.segura.imagesapp.model.ImageItem
-import com.segura.imagesapp.network.pagging.search.SearchImageDataSourceFactory
-import com.segura.imagesapp.utils.getPagingConfig
+import com.segura.imagesapp.domain.model.ImageItem
 import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.launch
 

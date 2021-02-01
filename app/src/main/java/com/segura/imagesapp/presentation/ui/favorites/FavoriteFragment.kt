@@ -12,11 +12,10 @@ import androidx.navigation.findNavController
 import androidx.recyclerview.widget.StaggeredGridLayoutManager
 import com.segura.imagesapp.R
 import com.segura.imagesapp.databinding.FragmentDashboardBinding
-import com.segura.imagesapp.model.ImageItem
+import com.segura.imagesapp.domain.model.ImageItem
 import com.segura.imagesapp.presentation.ui.adapters.ImageListPagedAdapter
 import com.segura.imagesapp.presentation.ui.adapters.favorite.FavoritePhotosAdapter
 import com.segura.imagesapp.utils.createSnackBar
-import kotlinx.coroutines.flow.collect
 import kotlinx.coroutines.flow.collectLatest
 import kotlinx.coroutines.launch
 import org.koin.androidx.viewmodel.ext.android.viewModel

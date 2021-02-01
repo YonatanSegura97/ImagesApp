@@ -10,7 +10,7 @@ import androidx.navigation.fragment.navArgs
 import com.segura.imagesapp.R
 import com.segura.imagesapp.databinding.ProfileFragmentBinding
 import com.segura.imagesapp.domain.model.NetworkState
-import com.segura.imagesapp.model.User
+import com.segura.imagesapp.domain.model.User
 import com.segura.imagesapp.utils.createSnackBar
 import com.segura.imagesapp.utils.loadCircularImage
 import org.koin.androidx.viewmodel.ext.android.viewModel

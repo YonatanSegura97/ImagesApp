@@ -4,11 +4,9 @@ import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
-import com.segura.imagesapp.data.repository.ImagesRepositoryOld
 import com.segura.imagesapp.domain.model.Resource
 import com.segura.imagesapp.domain.useCase.GetUserDetailUseCase
-import com.segura.imagesapp.model.User
-import com.segura.imagesapp.network.ResultWrapper
+import com.segura.imagesapp.domain.model.User
 import kotlinx.coroutines.flow.collect
 import kotlinx.coroutines.launch
 

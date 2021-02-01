@@ -1,7 +1,8 @@
-package com.segura.imagesapp.model
+package com.segura.imagesapp.domain.model
 
 
 import com.google.gson.annotations.SerializedName
+
 
 data class User(
     @SerializedName("accepted_tos")

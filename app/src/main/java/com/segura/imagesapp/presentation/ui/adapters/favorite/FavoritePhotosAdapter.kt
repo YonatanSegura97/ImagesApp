@@ -6,7 +6,7 @@ import android.view.ViewGroup
 import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.ListAdapter
 import com.segura.imagesapp.databinding.PhotoListItemBinding
-import com.segura.imagesapp.model.ImageItem
+import com.segura.imagesapp.domain.model.ImageItem
 import com.segura.imagesapp.presentation.ui.adapters.ImageListPagedAdapter
 import com.segura.imagesapp.presentation.ui.adapters.ImageListViewHolder
 

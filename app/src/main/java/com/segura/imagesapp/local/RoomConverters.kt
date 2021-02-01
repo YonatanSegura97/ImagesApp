@@ -1,10 +1,9 @@
 package com.segura.imagesapp.local
 
 import androidx.room.TypeConverter
-import androidx.room.TypeConverters
 import com.google.gson.Gson
-import com.segura.imagesapp.model.Urls
-import com.segura.imagesapp.model.User
+import com.segura.imagesapp.domain.model.Urls
+import com.segura.imagesapp.domain.model.User
 
 class RoomConverters {
 

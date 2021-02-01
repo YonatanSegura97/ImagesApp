@@ -1,8 +1,8 @@
-package com.segura.imagesapp.model.photoDetail
+package com.segura.imagesapp.domain.model.photoDetail
 
 
 import com.google.gson.annotations.SerializedName
-import com.segura.imagesapp.model.Urls
+import com.segura.imagesapp.domain.model.Urls
 
 data class PreviewPhoto(
     @SerializedName("blur_hash")

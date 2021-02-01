@@ -1,38 +1,37 @@
-package com.segura.imagesapp.model.photoDetail
+package com.segura.imagesapp.domain.model
 
 
+import androidx.room.ColumnInfo
+import androidx.room.Entity
+import androidx.room.PrimaryKey
 import com.google.gson.annotations.SerializedName
-import com.segura.imagesapp.model.Urls
-import com.segura.imagesapp.model.User
 
-data class CoverPhoto(
+@Entity(tableName = "FavoritePhotos")
+data class ImageItem(
+    @ColumnInfo(defaultValue = "empty")
     @SerializedName("alt_description")
     val altDescription: String,
     @SerializedName("blur_hash")
     val blurHash: String,
-    @SerializedName("categories")
-    val categories: List<Any>,
     @SerializedName("color")
     val color: String,
     @SerializedName("created_at")
     val createdAt: String,
-    @SerializedName("current_user_collections")
-    val currentUserCollections: List<Any>,
+    @ColumnInfo(defaultValue = "empty")
     @SerializedName("description")
     val description: String,
     @SerializedName("height")
     val height: Int,
+    @PrimaryKey
     @SerializedName("id")
     val id: String,
     @SerializedName("liked_by_user")
     val likedByUser: Boolean,
     @SerializedName("likes")
     val likes: Int,
-
+    @ColumnInfo(defaultValue = "empty")
     @SerializedName("promoted_at")
     val promotedAt: String,
-    @SerializedName("sponsorship")
-    val sponsorship: Any,
     @SerializedName("updated_at")
     val updatedAt: String,
     @SerializedName("urls")

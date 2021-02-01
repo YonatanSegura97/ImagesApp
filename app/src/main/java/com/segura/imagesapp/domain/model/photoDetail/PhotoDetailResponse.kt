@@ -1,14 +1,11 @@
-package com.segura.imagesapp.model
+package com.segura.imagesapp.domain.model.photoDetail
 
 
-import androidx.room.ColumnInfo
-import androidx.room.Entity
-import androidx.room.PrimaryKey
 import com.google.gson.annotations.SerializedName
+import com.segura.imagesapp.domain.model.Urls
+import com.segura.imagesapp.domain.model.User
 
-@Entity(tableName = "FavoritePhotos")
-data class ImageItem(
-    @ColumnInfo(defaultValue = "empty")
+data class PhotoDetailResponse(
     @SerializedName("alt_description")
     val altDescription: String,
     @SerializedName("blur_hash")
@@ -17,27 +14,32 @@ data class ImageItem(
     val color: String,
     @SerializedName("created_at")
     val createdAt: String,
-    @ColumnInfo(defaultValue = "empty")
     @SerializedName("description")
-    val description: String,
+    val description: Any,
+    @SerializedName("downloads")
+    val downloads: Int,
+    @SerializedName("exif")
+    val exif: Exif,
     @SerializedName("height")
     val height: Int,
-    @PrimaryKey
     @SerializedName("id")
     val id: String,
     @SerializedName("liked_by_user")
     val likedByUser: Boolean,
     @SerializedName("likes")
     val likes: Int,
-    @ColumnInfo(defaultValue = "empty")
     @SerializedName("promoted_at")
-    val promotedAt: String,
+    val promotedAt: Any,
+    @SerializedName("related_collections")
+    val relatedCollections: RelatedCollections,
     @SerializedName("updated_at")
     val updatedAt: String,
-    @SerializedName("urls")
-    val urls: Urls,
+    @SerializedName("views")
+    val views: Int,
+    @SerializedName("width")
+    val width: Int,
     @SerializedName("user")
     val user: User,
-    @SerializedName("width")
-    val width: Int
+    @SerializedName("urls")
+    val urls: Urls
 )

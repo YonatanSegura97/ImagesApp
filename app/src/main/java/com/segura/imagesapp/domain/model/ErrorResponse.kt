@@ -1,4 +1,4 @@
-package com.segura.imagesapp.model
+package com.segura.imagesapp.domain.model
 
 import com.google.gson.annotations.SerializedName
 

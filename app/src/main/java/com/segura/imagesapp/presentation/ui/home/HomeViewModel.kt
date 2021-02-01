@@ -6,12 +6,10 @@ import androidx.paging.PagingConfig
 import androidx.paging.PagingData
 import androidx.paging.cachedIn
 import com.segura.imagesapp.data.paging.ImagePagingSource
-import com.segura.imagesapp.domain.model.Resource
 import com.segura.imagesapp.domain.useCase.GetImagesUseCase
 import com.segura.imagesapp.domain.useCase.InsertFavoriteImageUseCase
-import com.segura.imagesapp.model.ImageItem
+import com.segura.imagesapp.domain.model.ImageItem
 import kotlinx.coroutines.flow.Flow
-import kotlinx.coroutines.flow.collect
 import kotlinx.coroutines.launch
 
 class HomeViewModel(

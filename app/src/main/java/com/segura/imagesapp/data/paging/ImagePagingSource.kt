@@ -2,7 +2,7 @@ package com.segura.imagesapp.data.paging
 
 import androidx.paging.PagingSource
 import com.segura.imagesapp.domain.useCase.GetImagesUseCase
-import com.segura.imagesapp.model.ImageItem
+import com.segura.imagesapp.domain.model.ImageItem
 
 class ImagePagingSource(
     private val useCase: GetImagesUseCase

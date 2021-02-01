@@ -1,25 +1,25 @@
-package com.segura.imagesapp.model.photoDetail
+package com.segura.imagesapp.domain.model.photoDetail
 
 
 import com.google.gson.annotations.SerializedName
-import com.segura.imagesapp.model.Urls
-import com.segura.imagesapp.model.User
+import com.segura.imagesapp.domain.model.Urls
+import com.segura.imagesapp.domain.model.User
 
-data class PhotoDetailResponse(
+data class CoverPhoto(
     @SerializedName("alt_description")
     val altDescription: String,
     @SerializedName("blur_hash")
     val blurHash: String,
+    @SerializedName("categories")
+    val categories: List<Any>,
     @SerializedName("color")
     val color: String,
     @SerializedName("created_at")
     val createdAt: String,
+    @SerializedName("current_user_collections")
+    val currentUserCollections: List<Any>,
     @SerializedName("description")
-    val description: Any,
-    @SerializedName("downloads")
-    val downloads: Int,
-    @SerializedName("exif")
-    val exif: Exif,
+    val description: String,
     @SerializedName("height")
     val height: Int,
     @SerializedName("id")
@@ -28,18 +28,17 @@ data class PhotoDetailResponse(
     val likedByUser: Boolean,
     @SerializedName("likes")
     val likes: Int,
+
     @SerializedName("promoted_at")
-    val promotedAt: Any,
-    @SerializedName("related_collections")
-    val relatedCollections: RelatedCollections,
+    val promotedAt: String,
+    @SerializedName("sponsorship")
+    val sponsorship: Any,
     @SerializedName("updated_at")
     val updatedAt: String,
-    @SerializedName("views")
-    val views: Int,
-    @SerializedName("width")
-    val width: Int,
+    @SerializedName("urls")
+    val urls: Urls,
     @SerializedName("user")
     val user: User,
-    @SerializedName("urls")
-    val urls: Urls
+    @SerializedName("width")
+    val width: Int
 )

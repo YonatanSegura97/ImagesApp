@@ -5,7 +5,7 @@ import android.view.ViewGroup
 import androidx.paging.PagingDataAdapter
 import androidx.recyclerview.widget.DiffUtil
 import com.segura.imagesapp.databinding.PhotoListItemBinding
-import com.segura.imagesapp.model.ImageItem
+import com.segura.imagesapp.domain.model.ImageItem
 
 class ImagePagedAdapter(private val callback: ImageListPagedAdapter.OnClickListener) :
     PagingDataAdapter<ImageItem, ImageListViewHolder>(ItemComparator) {

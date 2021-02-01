@@ -2,7 +2,7 @@ package com.segura.imagesapp.presentation.ui.adapters
 
 import androidx.recyclerview.widget.RecyclerView
 import com.segura.imagesapp.databinding.PhotoListItemBinding
-import com.segura.imagesapp.model.ImageItem
+import com.segura.imagesapp.domain.model.ImageItem
 import com.segura.imagesapp.utils.loadCircularImage
 import com.segura.imagesapp.utils.loadImageWithThumbnail
 
