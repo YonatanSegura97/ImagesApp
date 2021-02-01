@@ -19,3 +19,8 @@
 - LifeCycles
 - Paging Library
 - Navigation Component
+
+## TODO
+- Add Mappers in the Repository and ViewModels.
+- Add Unit Testing.
+
