@@ -9,7 +9,7 @@ class NetworkStateViewHolder(private val binding: NetworkStateItemBinding) :
     RecyclerView.ViewHolder(binding.root) {
 
     fun bind(
-        networkState: NetworkState?, callback: ImageListPagedAdapter.OnClickListener
+        networkState: NetworkState?, callback: ImagePagedAdapter.OnClickListener
     ) {
         hideViews()
         setVisibleRightViews(networkState)

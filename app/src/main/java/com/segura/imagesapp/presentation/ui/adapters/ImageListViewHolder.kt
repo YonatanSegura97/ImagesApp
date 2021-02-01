@@ -11,7 +11,7 @@ class ImageListViewHolder(
 ) :
     RecyclerView.ViewHolder(binding.root) {
     fun bind(
-        callback: ImageListPagedAdapter.OnClickListener,
+        callback: ImagePagedAdapter.OnClickListener,
         photoItem: ImageItem?,
         position: Int
     ) {

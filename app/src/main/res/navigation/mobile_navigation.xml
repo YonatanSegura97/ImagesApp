@@ -35,22 +35,17 @@
     </fragment>
 
     <fragment
-        android:id="@+id/navigation_notifications"
-        android:name="com.segura.imagesapp.presentation.ui.notifications.NotificationsFragment"
-        android:label="@string/title_notifications"
-        tools:layout="@layout/fragment_notifications" />
-    <fragment
         android:id="@+id/profileFragment"
         android:name="com.segura.imagesapp.presentation.ui.profile.ProfileFragment"
         android:label="profile_fragment"
-        tools:layout="@layout/profile_fragment" >
+        tools:layout="@layout/fragment_profile" >
         <argument
             android:name="userName"
             app:argType="string" />
     </fragment>
     <fragment
         android:id="@+id/photoDetailFragment"
-        android:name="com.segura.imagesapp.presentation.ui.detail.PhotoDetailFragment"
+        android:name="com.segura.imagesapp.presentation.ui.detail.ImageDetailFragment"
         android:label="PhotoDetailFragment" >
         <argument
             android:name="imageId"

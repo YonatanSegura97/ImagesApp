@@ -13,18 +13,18 @@ import androidx.recyclerview.widget.StaggeredGridLayoutManager
 import com.segura.imagesapp.R
 import com.segura.imagesapp.databinding.FragmentDashboardBinding
 import com.segura.imagesapp.domain.model.ImageItem
-import com.segura.imagesapp.presentation.ui.adapters.ImageListPagedAdapter
-import com.segura.imagesapp.presentation.ui.adapters.favorite.FavoritePhotosAdapter
+import com.segura.imagesapp.presentation.ui.adapters.ImagePagedAdapter
+import com.segura.imagesapp.presentation.ui.adapters.favorite.FavoriteImageAdapter
 import com.segura.imagesapp.utils.createSnackBar
 import kotlinx.coroutines.flow.collectLatest
 import kotlinx.coroutines.launch
 import org.koin.androidx.viewmodel.ext.android.viewModel
 
-class FavoriteFragment : Fragment(), ImageListPagedAdapter.OnClickListener {
+class FavoriteFragment : Fragment(), ImagePagedAdapter.OnClickListener {
 
     private val favoriteViewModel: FavoriteViewModel by viewModel()
     private lateinit var fragmentDashboardBinding: FragmentDashboardBinding
-    lateinit var favoritePhotosAdapter: FavoritePhotosAdapter
+    lateinit var favoriteImageAdapter: FavoriteImageAdapter
 
 
     override fun onCreateView(
@@ -59,7 +59,7 @@ class FavoriteFragment : Fragment(), ImageListPagedAdapter.OnClickListener {
 
         viewLifecycleOwner.lifecycleScope.launch {
             favoriteViewModel.favoritePhotos.collectLatest {
-                favoritePhotosAdapter.submitList(it)
+                favoriteImageAdapter.submitList(it)
                 if (it.isEmpty()) {
                     fragmentDashboardBinding.linearEmptyView.visibility = View.VISIBLE
                 } else {
@@ -70,16 +70,16 @@ class FavoriteFragment : Fragment(), ImageListPagedAdapter.OnClickListener {
 
 
         favoriteViewModel.filterImages.observe(viewLifecycleOwner, {
-            favoritePhotosAdapter.submitList(it)
+            favoriteImageAdapter.submitList(it)
         })
     }
 
     private fun prepareRecyclerView() {
-        favoritePhotosAdapter = FavoritePhotosAdapter(this)
+        favoriteImageAdapter = FavoriteImageAdapter(this)
         val gridLayoutManager = StaggeredGridLayoutManager(2, StaggeredGridLayoutManager.VERTICAL)
 
         fragmentDashboardBinding.favoriteRecyclers.apply {
-            adapter = favoritePhotosAdapter
+            adapter = favoriteImageAdapter
             layoutManager = gridLayoutManager
         }
     }
@@ -98,11 +98,11 @@ class FavoriteFragment : Fragment(), ImageListPagedAdapter.OnClickListener {
     }
 
     override fun onRetryClicked() {
-
+//        Not implemented yet
     }
 
     override fun onRemoveFavorite(position: Int, imageItem: ImageItem) {
-
+//        Not implemented yet
     }
 
     override fun onProfileClicked(position: Int, imageItem: ImageItem) {

@@ -8,7 +8,8 @@ import androidx.databinding.DataBindingUtil
 import androidx.fragment.app.Fragment
 import androidx.navigation.fragment.navArgs
 import com.segura.imagesapp.R
-import com.segura.imagesapp.databinding.ProfileFragmentBinding
+import com.segura.imagesapp.databinding.FragmentProfileBinding
+
 import com.segura.imagesapp.domain.model.NetworkState
 import com.segura.imagesapp.domain.model.User
 import com.segura.imagesapp.utils.createSnackBar
@@ -27,13 +28,13 @@ class ProfileFragment : Fragment() {
         parametersOf(args.userName)
     }
 
-    private lateinit var binding: ProfileFragmentBinding
+    private lateinit var binding: FragmentProfileBinding
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
-        binding = DataBindingUtil.inflate(inflater, R.layout.profile_fragment, container, false)
+        binding = DataBindingUtil.inflate(inflater, R.layout.fragment_profile, container, false)
         return binding.root
     }
 

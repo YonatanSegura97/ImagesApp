@@ -12,14 +12,13 @@ import androidx.recyclerview.widget.StaggeredGridLayoutManager
 import com.segura.imagesapp.R
 import com.segura.imagesapp.databinding.FragmentHomeBinding
 import com.segura.imagesapp.domain.model.ImageItem
-import com.segura.imagesapp.presentation.ui.adapters.ImageListPagedAdapter
 import com.segura.imagesapp.presentation.ui.adapters.ImagePagedAdapter
 import com.segura.imagesapp.utils.createSnackBar
 import kotlinx.coroutines.flow.collectLatest
 import kotlinx.coroutines.launch
 import org.koin.androidx.viewmodel.ext.android.viewModel
 
-class HomeFragment : Fragment(), ImageListPagedAdapter.OnClickListener {
+class HomeFragment : Fragment(), ImagePagedAdapter.OnClickListener {
 
     private val homeViewModel: HomeViewModel by viewModel()
     private lateinit var fragmentHomeBinding: FragmentHomeBinding
@@ -98,11 +97,11 @@ class HomeFragment : Fragment(), ImageListPagedAdapter.OnClickListener {
     }
 
     override fun onRetryClicked() {
-
+        //        Not implemented yet
     }
 
     override fun onRemoveFavorite(position: Int, imageItem: ImageItem) {
-
+//        Not implemented yet
     }
 
     override fun onProfileClicked(position: Int, imageItem: ImageItem) {

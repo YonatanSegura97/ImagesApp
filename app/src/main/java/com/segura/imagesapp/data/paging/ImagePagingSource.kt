@@ -3,6 +3,7 @@ package com.segura.imagesapp.data.paging
 import androidx.paging.PagingSource
 import com.segura.imagesapp.domain.useCase.GetImagesUseCase
 import com.segura.imagesapp.domain.model.ImageItem
+import com.segura.imagesapp.utils.ConstantsUtils
 
 class ImagePagingSource(
     private val useCase: GetImagesUseCase
@@ -10,7 +11,7 @@ class ImagePagingSource(
     override suspend fun load(params: LoadParams<Int>): LoadResult<Int, ImageItem> {
         return try {
             val nextPage = params.key ?: 1
-            val response = useCase.execute(nextPage, 10)
+            val response = useCase.execute(nextPage, ConstantsUtils.ITEMS_BY_PAGE)
             LoadResult.Page(
                 data = response,
                 prevKey = if (nextPage == 1) null else nextPage - 1,

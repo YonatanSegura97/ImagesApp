@@ -9,6 +9,4 @@ data class SearchImagesResponse(
     val total_pages: Int,
     @SerializedName("results")
     val results: List<ImageItem>,
-
-
-    )
+)

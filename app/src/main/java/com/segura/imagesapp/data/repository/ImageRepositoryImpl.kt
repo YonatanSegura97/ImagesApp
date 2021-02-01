@@ -1,10 +1,11 @@
 package com.segura.imagesapp.data.repository
 
 
+import com.segura.imagesapp.BuildConfig
 import com.segura.imagesapp.data.dataSource.ImagesRemoteDataSource
 import com.segura.imagesapp.domain.contract.ImagesRepository
 import com.segura.imagesapp.domain.model.Resource
-import com.segura.imagesapp.local.PhotosDao
+import com.segura.imagesapp.data.dataSource.ImagesDao
 import com.segura.imagesapp.domain.model.ImageItem
 import com.segura.imagesapp.domain.model.SearchImagesResponse
 import com.segura.imagesapp.domain.model.User
@@ -20,11 +21,11 @@ import kotlinx.coroutines.withContext
 class ImageRepositoryImpl(
     private val imagesRemoteDataSource: ImagesRemoteDataSource,
     private val dispatcherProvider: DefaultDispatcherProvider,
-    private val imagesLocalDataSource: PhotosDao
+    private val imagesLocalDataSource: ImagesDao
 ) : ImagesRepository {
     override suspend fun getImages(page: Int, perPage: Int): List<ImageItem> {
         return imagesRemoteDataSource.getImageList(
-            clientId = ConstantsUtils.ACCESS_KEY,
+            clientId = BuildConfig.ACCESS_KEY,
             page,
             perPage
         )
@@ -36,7 +37,7 @@ class ImageRepositoryImpl(
             emit(Resource.loading(null))
             val imageDetailResponse = imagesRemoteDataSource.getImageDetail(
                 photoId = imageId,
-                clientId = ConstantsUtils.ACCESS_KEY
+                clientId = BuildConfig.ACCESS_KEY
             )
             emit(Resource.success(imageDetailResponse))
 
@@ -72,7 +73,7 @@ class ImageRepositoryImpl(
             emit(Resource.loading(null))
             val response = imagesRemoteDataSource.getUserDetails(
                 username = userName,
-                clientId = ConstantsUtils.ACCESS_KEY
+                clientId = BuildConfig.ACCESS_KEY
             )
             emit(Resource.success(response))
         }.catch {
@@ -86,7 +87,7 @@ class ImageRepositoryImpl(
         perPage: Int
     ): SearchImagesResponse {
         return withContext(dispatcherProvider.io()) {
-            imagesRemoteDataSource.searchImages(ConstantsUtils.ACCESS_KEY, page, perPage, query)
+            imagesRemoteDataSource.searchImages(BuildConfig.ACCESS_KEY, page, perPage, query)
         }
     }
 

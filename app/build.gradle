@@ -3,7 +3,7 @@ plugins {
     id 'kotlin-android'
     id 'kotlin-kapt'
     id 'kotlin-android-extensions'
-    id  'androidx.navigation.safeargs.kotlin'
+    id 'androidx.navigation.safeargs.kotlin'
 }
 
 android {
@@ -32,6 +32,16 @@ android {
             minifyEnabled false
             proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
         }
+
+        debug {
+            buildConfigField("String", "BASE_URL", "\"https://api.unsplash.com/\"")
+            buildConfigField("String", "ACCESS_KEY", "\"-PYtjhG9HwxxNTPpZSQRje6TnE1VXRbMXjwCB_a4GIg\"")
+            buildConfigField("String", "SECRET_KEY", "\"gY-L9Zz74plqkvYz6zBvi7O3j_kTEvuzLg7yCCwq0Ls\"")
+            minifyEnabled false
+            proguardFiles getDefaultProguardFile('proguard-android.txt')
+            multiDexEnabled false
+
+        }
     }
 
     dataBinding {
@@ -57,8 +67,6 @@ dependencies {
     implementation 'androidx.navigation:navigation-ui-ktx:2.3.2'
     implementation 'androidx.lifecycle:lifecycle-livedata-ktx:2.2.0'
     implementation 'androidx.lifecycle:lifecycle-viewmodel-ktx:2.2.0'
-    implementation 'androidx.navigation:navigation-fragment-ktx:2.3.2'
-    implementation 'androidx.navigation:navigation-ui-ktx:2.3.2'
     implementation 'androidx.legacy:legacy-support-v4:1.0.0'
     testImplementation 'junit:junit:4.+'
     androidTestImplementation 'androidx.test.ext:junit:1.1.2'

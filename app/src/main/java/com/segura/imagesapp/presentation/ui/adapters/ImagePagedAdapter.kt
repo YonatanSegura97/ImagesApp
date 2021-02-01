@@ -7,9 +7,16 @@ import androidx.recyclerview.widget.DiffUtil
 import com.segura.imagesapp.databinding.PhotoListItemBinding
 import com.segura.imagesapp.domain.model.ImageItem
 
-class ImagePagedAdapter(private val callback: ImageListPagedAdapter.OnClickListener) :
+class ImagePagedAdapter(private val callback: OnClickListener) :
     PagingDataAdapter<ImageItem, ImageListViewHolder>(ItemComparator) {
 
+    interface OnClickListener {
+        fun onImageClicked(position: Int, imageItem: ImageItem)
+        fun onFavoriteClicked(position: Int, imageItem: ImageItem)
+        fun onRetryClicked()
+        fun onRemoveFavorite(position: Int, imageItem: ImageItem)
+        fun onProfileClicked(position: Int, imageItem: ImageItem)
+    }
 
     object ItemComparator : DiffUtil.ItemCallback<ImageItem>() {
         override fun areItemsTheSame(oldItem: ImageItem, newItem: ImageItem): Boolean {

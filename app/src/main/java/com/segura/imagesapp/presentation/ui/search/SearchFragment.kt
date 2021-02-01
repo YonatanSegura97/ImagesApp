@@ -11,30 +11,29 @@ import androidx.lifecycle.lifecycleScope
 import androidx.navigation.findNavController
 import androidx.recyclerview.widget.StaggeredGridLayoutManager
 import com.segura.imagesapp.R
-import com.segura.imagesapp.databinding.SearchFragmentBinding
+import com.segura.imagesapp.databinding.FragmentSearchBinding
 import com.segura.imagesapp.domain.model.ImageItem
-import com.segura.imagesapp.presentation.ui.adapters.ImageListPagedAdapter
 import com.segura.imagesapp.presentation.ui.adapters.ImagePagedAdapter
 import com.segura.imagesapp.utils.createSnackBar
 import kotlinx.coroutines.flow.collectLatest
 import kotlinx.coroutines.launch
 import org.koin.androidx.viewmodel.ext.android.viewModel
 
-class SearchFragment : Fragment(), ImageListPagedAdapter.OnClickListener {
+class SearchFragment : Fragment(), ImagePagedAdapter.OnClickListener {
 
     companion object {
         fun newInstance() = SearchFragment()
     }
 
     private val viewModel: SearchViewModel by viewModel()
-    lateinit var binding: SearchFragmentBinding
+    lateinit var binding: FragmentSearchBinding
     private lateinit var imageListPagerAdapter: ImagePagedAdapter
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
-        binding = DataBindingUtil.inflate(inflater, R.layout.search_fragment, container, false)
+        binding = DataBindingUtil.inflate(inflater, R.layout.fragment_search, container, false)
         return binding.root
     }
 
@@ -71,7 +70,6 @@ class SearchFragment : Fragment(), ImageListPagedAdapter.OnClickListener {
     }
 
 
-
     override fun onImageClicked(position: Int, imageItem: ImageItem) {
         val action = SearchFragmentDirections.actionSearchFragmentToPhotoDetailFragment(
             imageId = imageItem.id,
@@ -86,11 +84,11 @@ class SearchFragment : Fragment(), ImageListPagedAdapter.OnClickListener {
     }
 
     override fun onRetryClicked() {
-
+//        Not implemented yet
     }
 
     override fun onRemoveFavorite(position: Int, imageItem: ImageItem) {
-
+//        Not implemented yet
     }
 
     override fun onProfileClicked(position: Int, imageItem: ImageItem) {

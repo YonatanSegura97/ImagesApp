@@ -2,19 +2,19 @@ package com.segura.imagesapp.di
 
 import android.app.Application
 import androidx.room.Room
+import com.segura.imagesapp.BuildConfig
 import com.segura.imagesapp.data.dataSource.ImagesRemoteDataSource
 import com.segura.imagesapp.data.repository.ImageRepositoryImpl
 import com.segura.imagesapp.domain.contract.ImagesRepository
 import com.segura.imagesapp.domain.useCase.*
-import com.segura.imagesapp.local.PhotosDao
-import com.segura.imagesapp.local.PhotosDatabase
-import com.segura.imagesapp.network.UrlInterceptor
-import com.segura.imagesapp.presentation.ui.detail.PhotoDetailViewModel
+import com.segura.imagesapp.data.dataSource.ImagesDao
+import com.segura.imagesapp.data.local.ImageDatabase
+import com.segura.imagesapp.data.network.UrlInterceptor
+import com.segura.imagesapp.presentation.ui.detail.ImageDetailViewModel
 import com.segura.imagesapp.presentation.ui.favorites.FavoriteViewModel
 import com.segura.imagesapp.presentation.ui.home.HomeViewModel
 import com.segura.imagesapp.presentation.ui.profile.ProfileViewModel
 import com.segura.imagesapp.presentation.ui.search.SearchViewModel
-import com.segura.imagesapp.utils.ConstantsUtils
 import com.segura.imagesapp.utils.DefaultDispatcherProvider
 import com.segura.imagesapp.utils.DispatcherProvider
 import okhttp3.OkHttpClient
@@ -31,7 +31,7 @@ val viewModelModule = module {
     viewModel { HomeViewModel(get(), get()) }
     viewModel { FavoriteViewModel(get(), get(), get()) }
     viewModel { (imageId: String, userId: String) ->
-        PhotoDetailViewModel(
+        ImageDetailViewModel(
             imageId,
             userId,
             get()
@@ -69,7 +69,7 @@ private fun createRemoteImageService(retrofit: Retrofit): ImagesRemoteDataSource
 private fun createImagesRepository(
     remoteDataSource: ImagesRemoteDataSource,
     dispatcherProvider: DefaultDispatcherProvider,
-    imagesLocalDataSource: PhotosDao
+    imagesLocalDataSource: ImagesDao
 ): ImagesRepository {
 
     return ImageRepositoryImpl(remoteDataSource, dispatcherProvider, imagesLocalDataSource)
@@ -97,18 +97,18 @@ val networkModule = module {
     single { DefaultDispatcherProvider() } bind DispatcherProvider::class
     single { UrlInterceptor() }
     single { createRemoteImageService(get()) }
-    single { provideRetrofit(get(), ConstantsUtils.BASE_URL) }
+    single { provideRetrofit(get(), BuildConfig.BASE_URL) }
     single { provideOkHttpClient(get()) }
     single { createImagesRepository(get(), get(), get()) }
 }
 
-private fun provideDatabase(application: Application): PhotosDatabase {
-    return Room.databaseBuilder(application, PhotosDatabase::class.java, "PhotosDatabase")
+private fun provideDatabase(application: Application): ImageDatabase {
+    return Room.databaseBuilder(application, ImageDatabase::class.java, "PhotosDatabase")
         .build()
 }
 
-private fun providePhotosDao(database: PhotosDatabase): PhotosDao {
-    return database.photosDao()
+private fun providePhotosDao(database: ImageDatabase): ImagesDao {
+    return database.imagesDao()
 }
 
 private const val TIME_OUT = 60L
