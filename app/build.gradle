@@ -35,8 +35,8 @@ android {
 
         debug {
             buildConfigField("String", "BASE_URL", "\"https://api.unsplash.com/\"")
-            buildConfigField("String", "ACCESS_KEY", "\"-PYtjhG9HwxxNTPpZSQRje6TnE1VXRbMXjwCB_a4GIg\"")
-            buildConfigField("String", "SECRET_KEY", "\"gY-L9Zz74plqkvYz6zBvi7O3j_kTEvuzLg7yCCwq0Ls\"")
+            buildConfigField("String", "ACCESS_KEY", "\"PASTE-YOUR-ACCESS-KEY\"")
+            buildConfigField("String", "SECRET_KEY", "\"PASTE-YOUR-SECRET-KEY\"")
             minifyEnabled false
             proguardFiles getDefaultProguardFile('proguard-android.txt')
             multiDexEnabled false
@@ -68,9 +68,7 @@ dependencies {
     implementation 'androidx.lifecycle:lifecycle-livedata-ktx:2.2.0'
     implementation 'androidx.lifecycle:lifecycle-viewmodel-ktx:2.2.0'
     implementation 'androidx.legacy:legacy-support-v4:1.0.0'
-    testImplementation 'junit:junit:4.+'
-    androidTestImplementation 'androidx.test.ext:junit:1.1.2'
-    androidTestImplementation 'androidx.test.espresso:espresso-core:3.3.0'
+
 
 
     //Custom Libraries
@@ -104,5 +102,17 @@ dependencies {
 
     //Lottie
     implementation "com.airbnb.android:lottie:$lottie_version"
+
+    //Test
+    testImplementation "org.mockito:mockito-core:$mockito_version"
+    testImplementation "org.mockito:mockito-inline:$mockito_version"
+    testImplementation 'org.jetbrains.kotlinx:kotlinx-coroutines-test:1.3.9'
+    testImplementation 'androidx.arch.core:core-testing:2.1.0'
+    testImplementation 'com.google.truth:truth:1.0.1'
+
+    testImplementation 'junit:junit:4.13'
+    androidTestImplementation 'androidx.test.ext:junit:1.1.2'
+    androidTestImplementation 'androidx.test.espresso:espresso-core:3.3.0'
+
 
 }
