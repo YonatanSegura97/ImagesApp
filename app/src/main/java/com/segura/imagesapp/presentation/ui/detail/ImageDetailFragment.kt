@@ -8,6 +8,7 @@ import androidx.databinding.DataBindingUtil
 import androidx.fragment.app.Fragment
 import androidx.navigation.findNavController
 import androidx.navigation.fragment.navArgs
+import androidx.transition.TransitionInflater
 import com.segura.imagesapp.R
 import com.segura.imagesapp.databinding.FragmentImageDetailBinding
 
@@ -24,13 +25,19 @@ class ImageDetailFragment : Fragment() {
     private lateinit var binding: FragmentImageDetailBinding
 
 
-
     private val viewModel: ImageDetailViewModel by viewModel {
         parametersOf(
             args.imageId,
             args.profileId
         )
     }
+
+    override fun onCreate(savedInstanceState: Bundle?) {
+        super.onCreate(savedInstanceState)
+        sharedElementEnterTransition =
+            TransitionInflater.from(requireContext()).inflateTransition(android.R.transition.move)
+    }
+
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -46,6 +53,10 @@ class ImageDetailFragment : Fragment() {
     override fun onActivityCreated(savedInstanceState: Bundle?) {
         super.onActivityCreated(savedInstanceState)
         setupObserver()
+        binding.imgContent.apply {
+            transitionName = args.imageUri
+            loadImageWithThumbnail(args.imageUri, null)
+        }
 
 
     }
@@ -75,7 +86,7 @@ class ImageDetailFragment : Fragment() {
             binding.imgUserProfile.loadCircularImage(photoInfo.user.profileImage.medium)
             binding.txtUserName.text = photoInfo.user.name
             binding.txtUserBio.text = photoInfo.user.bio
-            binding.imgContent.loadImageWithThumbnail(photoInfo.urls.full, photoInfo.urls.thumb)
+//            binding.imgContent.loadImageWithThumbnail(photoInfo.urls.full, photoInfo.urls.thumb)
             binding.txtImageDescription.text = photoInfo.altDescription
             binding.txtLikesCount.text = photoInfo.likes.toString()
             binding.txtViewsCount.text = photoInfo.views.toString()

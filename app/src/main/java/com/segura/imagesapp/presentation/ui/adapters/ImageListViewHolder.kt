@@ -19,6 +19,7 @@ class ImageListViewHolder(
 
 //            binding.imgContent.layoutParams.height = getRandomHeight()
 
+            binding.imgContent.transitionName = photoInfo.urls.regular
             binding.imgContent.loadImageWithThumbnail(
                 thumbnail = photoInfo.urls.thumb,
                 imageUrl = photoInfo.urls.small
@@ -29,7 +30,7 @@ class ImageListViewHolder(
             binding.txtUserName.text = photoInfo.user.name
 
             binding.cardContainer.setOnClickListener {
-                callback.onImageClicked(position, photoInfo)
+                callback.onImageClicked(position, photoInfo, binding.imgContent)
             }
 
             binding.cardContainer.setOnLongClickListener {

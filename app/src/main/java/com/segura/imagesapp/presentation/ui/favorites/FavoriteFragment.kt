@@ -5,6 +5,7 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.view.inputmethod.EditorInfo
+import android.widget.ImageView
 import androidx.databinding.DataBindingUtil
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.lifecycleScope
@@ -84,10 +85,11 @@ class FavoriteFragment : Fragment(), ImagePagedAdapter.OnClickListener {
         }
     }
 
-    override fun onImageClicked(position: Int, imageItem: ImageItem) {
+    override fun onImageClicked(position: Int, imageItem: ImageItem, imageView: ImageView) {
         val action = FavoriteFragmentDirections.actionNavigationDashboardToPhotoDetailFragment(
             imageItem.id,
-            imageItem.user.id
+            imageItem.user.id,
+            imageItem.urls.regular
         )
         fragmentDashboardBinding.root.findNavController().navigate(action)
     }

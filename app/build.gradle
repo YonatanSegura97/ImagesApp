@@ -35,8 +35,8 @@ android {
 
         debug {
             buildConfigField("String", "BASE_URL", "\"https://api.unsplash.com/\"")
-            buildConfigField("String", "ACCESS_KEY", "\"PASTE-YOUR-ACCESS-KEY\"")
-            buildConfigField("String", "SECRET_KEY", "\"PASTE-YOUR-SECRET-KEY\"")
+            buildConfigField("String", "ACCESS_KEY", "\"-PYtjhG9HwxxNTPpZSQRje6TnE1VXRbMXjwCB_a4GIg\"")
+            buildConfigField("String", "SECRET_KEY", "\"gY-L9Zz74plqkvYz6zBvi7O3j_kTEvuzLg7yCCwq0Ls\"")
             minifyEnabled false
             proguardFiles getDefaultProguardFile('proguard-android.txt')
             multiDexEnabled false

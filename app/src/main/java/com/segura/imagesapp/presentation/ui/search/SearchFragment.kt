@@ -5,6 +5,7 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.view.inputmethod.EditorInfo
+import android.widget.ImageView
 import androidx.databinding.DataBindingUtil
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.lifecycleScope
@@ -70,10 +71,11 @@ class SearchFragment : Fragment(), ImagePagedAdapter.OnClickListener {
     }
 
 
-    override fun onImageClicked(position: Int, imageItem: ImageItem) {
+    override fun onImageClicked(position: Int, imageItem: ImageItem, imageView: ImageView) {
         val action = SearchFragmentDirections.actionSearchFragmentToPhotoDetailFragment(
             imageId = imageItem.id,
-            profileId = imageItem.user.id
+            profileId = imageItem.user.id,
+            imageUri = imageItem.urls.regular
         )
         binding.root.findNavController().navigate(action)
     }

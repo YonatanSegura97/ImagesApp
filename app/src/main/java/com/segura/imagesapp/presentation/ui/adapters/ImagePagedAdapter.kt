@@ -2,6 +2,7 @@ package com.segura.imagesapp.presentation.ui.adapters
 
 import android.view.LayoutInflater
 import android.view.ViewGroup
+import android.widget.ImageView
 import androidx.paging.PagingDataAdapter
 import androidx.recyclerview.widget.DiffUtil
 import com.segura.imagesapp.databinding.PhotoListItemBinding
@@ -11,7 +12,7 @@ class ImagePagedAdapter(private val callback: OnClickListener) :
     PagingDataAdapter<ImageItem, ImageListViewHolder>(ItemComparator) {
 
     interface OnClickListener {
-        fun onImageClicked(position: Int, imageItem: ImageItem)
+        fun onImageClicked(position: Int, imageItem: ImageItem, imageView: ImageView)
         fun onFavoriteClicked(position: Int, imageItem: ImageItem)
         fun onRetryClicked()
         fun onProfileClicked(position: Int, imageItem: ImageItem)

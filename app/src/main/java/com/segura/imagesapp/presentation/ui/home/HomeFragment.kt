@@ -4,10 +4,12 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.ImageView
 import androidx.databinding.DataBindingUtil
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.lifecycleScope
 import androidx.navigation.findNavController
+import androidx.navigation.fragment.FragmentNavigatorExtras
 import androidx.recyclerview.widget.StaggeredGridLayoutManager
 import com.segura.imagesapp.R
 import com.segura.imagesapp.databinding.FragmentHomeBinding
@@ -83,12 +85,15 @@ class HomeFragment : Fragment(), ImagePagedAdapter.OnClickListener {
         }
     }
 
-    override fun onImageClicked(position: Int, imageItem: ImageItem) {
+    override fun onImageClicked(position: Int, imageItem: ImageItem, imageView: ImageView) {
         val action = HomeFragmentDirections.actionNavigationHomeToPhotoDetailFragment(
             imageId = imageItem.id,
-            profileId = imageItem.user.id
+            profileId = imageItem.user.id,
+            imageUri = imageItem.urls.regular
         )
-        fragmentHomeBinding.root.findNavController().navigate(action)
+        val extras = FragmentNavigatorExtras(imageView to imageItem.urls.regular)
+
+        fragmentHomeBinding.root.findNavController().navigate(action, extras)
     }
 
     override fun onFavoriteClicked(position: Int, imageItem: ImageItem) {
