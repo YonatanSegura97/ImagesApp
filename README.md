@@ -7,7 +7,7 @@
 - La búsqueda se realizará hasta presionar el botón de search en el teclado del dispositivo. (Se hizo para no gastar el límite de request disponibles)
 
 ## Tecnologías utilizadas
-- Clean Architecture -1
+- Clean Architecture
 - Kotlin
 - Data Bindings
 - Room
