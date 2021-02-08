@@ -21,7 +21,7 @@ class ImageListViewHolder(
 
             binding.imgContent.loadImageWithThumbnail(
                 thumbnail = photoInfo.urls.thumb,
-                imageUrl = photoInfo.urls.full
+                imageUrl = photoInfo.urls.small
             )
 
             binding.imgUser.loadCircularImage(photoInfo.user.profileImage.medium)
@@ -45,9 +45,4 @@ class ImageListViewHolder(
         }
     }
 
-    private fun getRandomHeight(): Int {
-        val maxDpSize = 800
-        val minDpSize = 400
-        return (minDpSize..maxDpSize).random()
-    }
 }

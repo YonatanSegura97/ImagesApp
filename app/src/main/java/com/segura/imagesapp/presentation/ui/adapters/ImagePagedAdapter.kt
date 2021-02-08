@@ -14,7 +14,6 @@ class ImagePagedAdapter(private val callback: OnClickListener) :
         fun onImageClicked(position: Int, imageItem: ImageItem)
         fun onFavoriteClicked(position: Int, imageItem: ImageItem)
         fun onRetryClicked()
-        fun onRemoveFavorite(position: Int, imageItem: ImageItem)
         fun onProfileClicked(position: Int, imageItem: ImageItem)
     }
 

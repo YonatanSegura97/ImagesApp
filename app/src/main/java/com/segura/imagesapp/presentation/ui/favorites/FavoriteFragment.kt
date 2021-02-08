@@ -101,9 +101,6 @@ class FavoriteFragment : Fragment(), ImagePagedAdapter.OnClickListener {
 //        Not implemented yet
     }
 
-    override fun onRemoveFavorite(position: Int, imageItem: ImageItem) {
-//        Not implemented yet
-    }
 
     override fun onProfileClicked(position: Int, imageItem: ImageItem) {
         val action =
